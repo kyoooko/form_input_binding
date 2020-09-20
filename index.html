@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello,vue.js</title>
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h3>◆基本</h3>
+    <p>{{message}}</p>
+    <input type="text" v-model="message">
+
+    <h3>◆v-model利用時は属性は無視される(valueは書いても特に何にもならない)</h3>
+    <input type="text" v-model="message" value="hogehoge">
+
+    <h3>◆複数行テキスト</h3>
+    <pre>{{ message }}</pre>
+    <!-- textareaではマスタッシュ構文を使ったデータバインディングは使えない。v-model使う -->
+    <!-- <textarea >{{ message }}</textarea> -->
+    <textarea v-model="message" ></textarea>
+
+    <h3> ◆チェックボックス(単体) </h3>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{checked}}</label>
+
+    <h3> ◆チェックボックス(複数) </h3>
+    <input type="checkbox" id="red" value="Red" v-model="colors">
+    <label for="red">Red</label>
+    <input type="checkbox" id="green" value="Green" v-model="colors">
+    <label for="green">Green</label>
+    <input type="checkbox" id="blue" value="Blue" v-model="colors">
+    <label for="blue">Blue</label>
+    <p>{{colors}}</p>
+
+    <h3>◆ラジオボタン</h3>
+    <input type="radio" id="red" value="Red" v-model="color">
+    <label for="red">Red</label>
+    <input type="radio" id="green" value="Green" v-model="color">
+    <label for="green">Green</label>
+    <input type="radio" id="blue" value="Blue" v-model="color">
+    <label for="blue">Blue</label>
+    <p>{{color}}</p>
+
+    <h3>◆セレクトボックス</h3>
+    <select v-model="selected">
+      <option disabale value="">Please select one</option>
+      <option>Red</option>
+      <option>Green</option>
+      <option>Blue</option>
+    </select>
+    <p>{{selected}}</p>
+
+    <h3>◆セレクトボックス(複数）→配列</h3>
+    <select v-model="selected2" multiple>
+      <option disabale value="">Please select one</option>
+      <option>Red</option>
+      <option>Green</option>
+      <option>Blue</option>
+    </select>
+    <p>{{selected2}}</p>
+
+    <h3>◆修飾子.lazy</h3>
+    <input type="text" v-model.lazy="message2">
+    <p>{{message2}}</p>
+
+    <h3>◆修飾子.trim</h3>
+    <input type="text" v-model.trim="message3">
+    <p>{{message3}}</p>
+
+    <h3>◆修飾子.number</h3>
+    つけない場合
+    <input type="text" v-model="age1">
+    <p>{{age1+ 10}}</p>
+    つけた場合
+    <input type="text" v-model.number="age2">
+    <p>{{age2 + 10}}</p>
+ 
+
+
+
+ 
+    
+  
+   
+
+
+
+
+
+<hr>
+  <!-- デバック用 -->
+  <pre>{{$data}}</pre>
+  </div>
+  <!-- ①vie.jsのCDNを先に読み込む。URLは公式ページから -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <!-- ②<script>下記のようにJSを別ファイルにしない場合はここにJSを書く</script> -->
+  <script src="js/main.js"></script>
+</body>
+</html>
